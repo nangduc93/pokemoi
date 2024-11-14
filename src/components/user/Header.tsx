@@ -3,10 +3,16 @@ import { Icon } from "@chakra-ui/react";
 import { Box, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { InputGroup } from "../ui/input-group";
 import { IoSearchSharp } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 export default function Header() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("q" || ""));
   const navigate = useNavigate();
   return (
     <Flex gap={60} alignItems="flex-end" paddingBlock={6}>
@@ -21,10 +27,9 @@ export default function Header() {
 
       <Box flex={1}>
         <InputGroup
-          size="xl"
           startElement={
             <Icon
-              cursor={"pointer"}
+              cursor="pointer"
               fontSize="20px"
               color="gray.800"
               onClick={() => {
@@ -38,7 +43,7 @@ export default function Header() {
                 }
               }}
             >
-              <IoSearchSharp />
+              <IoSearchSharp cursor="pointer" />
             </Icon>
           }
           width="full"

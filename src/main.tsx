@@ -12,23 +12,30 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const queryClient = new QueryClient({});
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root />,
+      children: [
+        { index: true, element: <Home /> },
+        {
+          path: "pokemon/search",
+          element: <Search />,
+        },
+        {
+          path: "pokemon/:name",
+          element: <Pokemon />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Root />,
-    children: [
-      { index: true, element: <Home /> },
-      {
-        path: "pokemon/search",
-        element: <Search />,
-      },
-      {
-        path: "pokemon/:name",
-        element: <Pokemon />,
-      },
-    ],
-  },
-]);
+    future: {
+      v7_fetcherPersist: true,
+    },
+  }
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

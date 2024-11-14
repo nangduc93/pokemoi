@@ -47,24 +47,6 @@ export default function Home() {
       </Grid>
 
       <Flex justifyContent="center" marginTop={5} gap={1}>
-        {/* <Button
-          onClick={() => setPage(1)}
-          colorScheme={page == 1 ? "purple" : "gray"}
-        >
-          1
-        </Button>
-        <Button
-          onClick={() => setPage(2)}
-          colorScheme={page == 2 ? "purple" : "gray"}
-        >
-          2
-        </Button>
-        <Button
-          onClick={() => setPage(3)}
-          colorScheme={page == 3 ? "purple" : "gray"}
-        >
-          3
-        </Button> */}
         <PaginationRoot
           count={pageCount}
           pageSize={2}
